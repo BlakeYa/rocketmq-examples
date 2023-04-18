@@ -10,10 +10,12 @@
 
 我们先了解一下 Spring Cloud Stream。
 
-这是官方对 Spring Cloud Stream 的一段介绍：
+这是官方对 Spring Cloud St
+
+ream 的一段介绍：
 
 Spring Cloud Stream 是一个用于构建基于消息的微服务应用框架。它基于 SpringBoot 来创建具有生产级别的单机 Spring 应用，并且使用 `Spring Integration` 与 Broker 进行连接。
- 
+
 Spring Cloud Stream 提供了消息中间件配置的统一抽象，推出了 publish-subscribe、consumer groups、partition 这些统一的概念。
 
 Spring Cloud Stream 内部有两个概念：Binder 和 Binding。
