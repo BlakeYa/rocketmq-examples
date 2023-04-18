@@ -1,36 +1,33 @@
+# 配置应用程序端口号
 server:
   port: 8089
 
+# 开启Spring Boot管理端点，并暴露所有端点
 management:
   endpoints:
     web:
       exposure:
         include: '*'
 
+# 配置Spring应用程序名称，并允许覆盖Bean定义
 spring:
   application:
     name: rocketmq-producer
   main:
     allow-bean-definition-overriding: true  #Spring Boot 2.1 需要设定
 
+  # 配置RocketMQ绑定器，包括NameServer地址和消息绑定的输出通道
   cloud:
     stream:
       rocketmq:
         binder:
-          name-server: 192.168.182.124:9876 #如果集群加 ; 隔开
-        bindings:
-          output1:
-            producer:
-              group: test-producer-group-1 #生产者组名
-          output2:
-            producer:
-              group: test-producer-group-2 #生产者组名
-              transactional: true #是否发送事务消息,默认是 false
-              sync: false #是否使用同步得方式发送消息，默认值是false，这里为了说明所以写上
+          name-server: localhost:9876 # 如果有多个NameServer，可以用分号隔开
       bindings:
         output1:
-          destination: test-topic-one
-          content-type: application/json
+          destination: test-topic-one  # 消息主题
+          content-type: application/json  # 消息数据格式
+          group: test-producer-group-1
         output2:
           destination: test-topic-two
           content-type: application/json
+          group: test-producer-group-2

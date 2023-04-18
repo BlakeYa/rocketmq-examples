@@ -20,6 +20,10 @@ public class TestControl {
     public String test(@PathVariable String businessNo) {
         String msg="hello";
         sendService.sendWithTags(msg,"tag1",businessNo);
+        System.out.println("字符串消息发送成功=======》 简单的字符串消息");
+        sendService.send(businessNo);
+        System.out.println("不带标签的消息发送成功=======");
+        test2();
         return "字符串消息发送成功!";
     }
 
@@ -29,6 +33,7 @@ public class TestControl {
         dto.setAge(111);
         dto.setName("小玲");
         sendService.sendObject(dto,"tag2");
+        System.out.println("实体消息发送成功");
         return "实体消息发送成功！";
     }
 }
